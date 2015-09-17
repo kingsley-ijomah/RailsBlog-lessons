@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917192702) do
+ActiveRecord::Schema.define(version: 20150917193411) do
 
   create_table "administrators", force: :cascade do |t|
     t.string   "username"
@@ -62,6 +62,13 @@ ActiveRecord::Schema.define(version: 20150917192702) do
   end
 
   add_index "posts", ["administrator_id"], name: "index_posts_on_administrator_id"
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "visitors", force: :cascade do |t|
     t.string   "full_name"
