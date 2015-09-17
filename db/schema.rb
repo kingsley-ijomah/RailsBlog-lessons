@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917190442) do
+ActiveRecord::Schema.define(version: 20150917191055) do
 
   create_table "administrators", force: :cascade do |t|
     t.string   "username"
@@ -19,6 +19,19 @@ ActiveRecord::Schema.define(version: 20150917190442) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "message"
+    t.string   "full_name"
+    t.boolean  "status"
+    t.integer  "post_id"
+    t.integer  "visitor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
+  add_index "comments", ["visitor_id"], name: "index_comments_on_visitor_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
