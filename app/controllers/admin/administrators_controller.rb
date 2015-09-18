@@ -1,7 +1,7 @@
 class Admin::AdministratorsController < ApplicationController
 	#GET /admin/adminsitrators/
 	def index
-		
+		@administrators = Administrator.all
 	end
 
 	#Get /admin/administrators/new
