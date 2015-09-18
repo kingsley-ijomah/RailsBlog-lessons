@@ -1,0 +1,15 @@
+<%= form_for [:admin, @administrator] do |f| %>
+	<p>
+		<%= f.label :full_name %><br>
+		<%= f.text_field :fullname %>
+	</p>
+	<p>
+		<%= f.label :username %><br>
+		<%= f.text_field :username %>
+	</p>
+	<p>
+		<%= f.label :password %><br>
+		<%= f.text_field :password %>
+	</p>
+	<p><%= f.submit %></p>
+<% end %>
