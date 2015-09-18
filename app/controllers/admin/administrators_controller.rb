@@ -1,4 +1,6 @@
 class Admin::AdministratorsController < ApplicationController
+	before_action :set_admin, only: [:show, :edit, :update, :destroy]
+
 	# GET /admin/adminsitrators/
 	def index
 		@administrators = Administrator.all
@@ -20,20 +22,36 @@ class Admin::AdministratorsController < ApplicationController
 		end
 	end
 
+	# GET /admin/administrator/:id
+	def show
+	end
+
 	# GET /admin/administrator/:id/edit
 	def edit
-		@administrator = Administrator.find(params[:id])
+	end
+
+	# POST /admin/administrator
+	def update
+
+		if @administrator.update(admin_params)
+			redirect_to admin_administrators_url
+		else
+			render 'edit'
+		end
 	end
 
 	# Delete /admin/administrator
 	def destroy
-		@administrator = Administrator.find(params[:id])
-		@admin.delete
+		@administrator.delete
 
 		redirect_to admin_administrators_url
 	end
 
 	private
+
+	def set_admin
+		@administrator = Administrator.find(params[:id])
+	end
 
 	def admin_params
 		params.require(:administrator).permit(:id, :fullname, :username, :password)
