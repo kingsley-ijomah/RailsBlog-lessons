@@ -1,0 +1,10 @@
+<div class="container">
+	<h2>Post Details</h2>
+
+	<p><b>Title:</b> <%= @post.title %></p>
+	<p><b>Content:</b> <%= @post.content %></p>
+	<p><b>Publish:</b> <%= @post.publish %></p>
+	<p><b>Created:</b> <%= @post.created_at %></p>
+
+	<%= link_to 'Index', admin_posts_path %>
+</div>
