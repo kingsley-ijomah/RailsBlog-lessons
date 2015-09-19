@@ -1,1 +1,30 @@
 <h2>Index</h2>
+
+<table class="table table-bordered">
+  <thead>
+		<tr>
+			<th>title</th>
+			<th>content</th>
+			<th>publish</th>
+			<th colspan="3">actions</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @posts.each do |post| %>
+			<tr>
+				<td><%= post.title %></td>
+				<td><%= post.content %></td>
+				<td><%= post.publish %></td>
+				<td>
+					<%= link_to 'Edit', edit_admin_post_path(post) %> |
+					<%= link_to 'Show', admin_post_path(post) %> |
+					<%= link_to 'Delete', admin_post_path(post), method: :delete %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<br>
+<%= link_to 'New', new_admin_post_path %>
