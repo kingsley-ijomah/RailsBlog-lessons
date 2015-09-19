@@ -1,4 +1,16 @@
 <%= form_for [:admin, @administrator] do |f| %>
+	<% if @administrator.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@administrator.errors.count, "error") %> prohibited this administrator from being saved:</h2>
+
+      <ul>
+      <% @administrator.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
 	<p>
 		<%= f.label :full_name %><br>
 		<%= f.text_field :fullname %>
