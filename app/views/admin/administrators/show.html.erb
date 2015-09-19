@@ -1,8 +1,10 @@
-<h2>Admin Details</h2>
+<div class="container">
+	<h2>Admin Details</h2>
 
-<p><b>Full Name:</b> <%= @administrator.fullname %></p>
-<p><b>Username:</b> <%= @administrator.username %></p>
-<p><b>Password:</b> <%= @administrator.password %></p>
-<p><b>Created:</b> <%= @administrator.created_at %></p>
+	<p><b>Full Name:</b> <%= @administrator.fullname %></p>
+	<p><b>Username:</b> <%= @administrator.username %></p>
+	<p><b>Password:</b> <%= @administrator.password %></p>
+	<p><b>Created:</b> <%= @administrator.created_at %></p>
 
-<%= link_to 'Index', admin_administrators_path %>
+	<%= link_to 'Index', admin_administrators_path %>
+</div>
