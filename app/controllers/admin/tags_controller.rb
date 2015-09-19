@@ -43,10 +43,10 @@ class Admin::TagsController < ApplicationController
 	private
 
 	def set_tag
-		@tag = Post.find(params[:id])
+		@tag = Tag.find(params[:id])
 	end
 
 	def tag_params
-		params.require(:post).permit(:id, :name, :status)
+		params.require(:tag).permit(:id, :name, :status)
 	end
 end

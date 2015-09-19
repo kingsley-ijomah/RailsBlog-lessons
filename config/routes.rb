@@ -54,6 +54,6 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   namespace :admin do 
-    resources :administrators, :posts
+    resources :administrators, :posts, :tags
   end
 end

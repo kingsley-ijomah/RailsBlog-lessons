@@ -1,0 +1,9 @@
+<div class="container">
+	<h2>Tag Details</h2>
+
+	<p><b>Name:</b> <%= @tag.name %></p>
+	<p><b>Status:</b> <%= @tag.status %></p>
+	<p><b>Created:</b> <%= @tag.created_at %></p>
+
+	<%= link_to 'Index', admin_tags_path %>
+</div>
