@@ -27,5 +27,8 @@
 		<%= f.label :administrator %><br>
 		<%= f.text_field :administrator_id %>
 	</p>
+
+	<%= f.select :tag_ids, Tag.all.collect {|t| [t.name, t.id]}, {}, :multiple => true %>
+
 	<p><%= f.submit %></p>
 <% end %>
