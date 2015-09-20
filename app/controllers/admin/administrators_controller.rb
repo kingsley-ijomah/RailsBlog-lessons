@@ -35,7 +35,7 @@ class Admin::AdministratorsController < ApplicationController
 	end
 
 	def destroy
-		@administrator.delete
+		@administrator.destroy
 
 		redirect_to admin_administrators_url
 	end

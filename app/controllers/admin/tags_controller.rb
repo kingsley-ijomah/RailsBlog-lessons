@@ -30,7 +30,7 @@ class Admin::TagsController < ApplicationController
 	end
 
 	def destroy
-		@tag.delete
+		@tag.destroy
 
 		redirect_to new_admin_tag_url
 	end
