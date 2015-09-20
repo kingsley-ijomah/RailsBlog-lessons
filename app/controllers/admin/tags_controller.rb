@@ -1,22 +1,17 @@
 class Admin::TagsController < ApplicationController
 	before_action :set_tag, only: [:show, :edit, :update, :destroy]
 
-	def index
+	def new
+		@tag = Tag.new
 		@tags = Tag.all
 	end
 
-	def new
-		@tag = Tag.new
-	end
-
 	def create
-		@tag = Tag.new(tag_params)
-
-		if @tag.save
-			redirect_to admin_tags_url
-		else
-			render 'new'
+		tag_params[:name].split(",").map do |tag|
+			Tag.new(name:tag).save
 		end
+
+		redirect_to new_admin_tag_url
 	end
 
 	def show
@@ -28,7 +23,7 @@ class Admin::TagsController < ApplicationController
 	def update
 
 		if @tag.update(tag_params)
-			redirect_to admin_tags_url
+			redirect_to new_admin_tag_url
 		else
 			render 'edit'
 		end
@@ -37,7 +32,7 @@ class Admin::TagsController < ApplicationController
 	def destroy
 		@tag.delete
 
-		redirect_to admin_tags_url
+		redirect_to new_admin_tag_url
 	end
 
 	private
