@@ -1,5 +1,5 @@
 class Admin::ModeratorsController < ApplicationController
-	before_action :set_admin, only: [:show, :edit, :update, :destroy]
+	before_action :set_admin, only: [:edit, :update, :destroy]
 
 	def index
 		@moderators = Moderator.all
@@ -17,9 +17,6 @@ class Admin::ModeratorsController < ApplicationController
 		else
 			render 'new'
 		end
-	end
-
-	def show
 	end
 
 	def edit

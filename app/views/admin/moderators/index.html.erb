@@ -6,7 +6,6 @@
 			<tr>
 				<th>full name</th>
 				<th>username</th>
-				<th>password</th>
 				<th colspan="3">actions</th>
 			</tr>
 		</thead>
@@ -16,10 +15,8 @@
 				<tr class="moderator-row">
 					<td><%= admin.fullname %></td>
 					<td><%= admin.username %></td>
-					<td><%= admin.password %></td>
 					<td>
 						<%= link_to 'Edit', edit_admin_moderator_path(admin) %> |
-						<%= link_to 'Show', admin_moderator_path(admin) %> |
 						<%= link_to 'Delete', admin_moderator_path(admin), method: :delete %>
 					</td>
 				</tr>
