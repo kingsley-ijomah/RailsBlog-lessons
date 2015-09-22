@@ -43,6 +43,7 @@ group :development, :test do
   gem 'spring'
   gem 'rails-footnotes', '~> 4.0'
   gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.5.0'
 end
 
 group :test do
