@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :moderator do
-    fullname "MyString"
-		username "MyString"
-		password "MyString"
+    fullname Faker::Name.name
+		username Faker::Internet.email
+		password Faker::Internet.password
   end
 end
