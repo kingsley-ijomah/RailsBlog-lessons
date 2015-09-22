@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919130227) do
+ActiveRecord::Schema.define(version: 20150921222618) do
 
-  create_table "administrators", force: :cascade do |t|
+  create_table "moderators", force: :cascade do |t|
     t.string   "fullname"
     t.string   "username"
     t.string   "password"
@@ -35,12 +35,12 @@ ActiveRecord::Schema.define(version: 20150919130227) do
     t.string   "title"
     t.text     "content"
     t.boolean  "publish"
-    t.integer  "administrator_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "moderator_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
-  add_index "posts", ["administrator_id"], name: "index_posts_on_administrator_id"
+  add_index "posts", ["moderator_id"], name: "index_posts_on_moderator_id"
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"

@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.boolean :publish
-      t.references :administrator, index: true, foreign_key: true
+      t.references :moderator, index: true, foreign_key: true
 
       t.timestamps null: false
     end

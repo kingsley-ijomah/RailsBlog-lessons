@@ -1,5 +1,5 @@
 <div class="container">
-	<h1>Administrators</h1>
+	<h1>Moderators</h1>
 
 	<table class="table table-bordered">
 	  <thead>
@@ -12,15 +12,15 @@
 		</thead>
 
 		<tbody>
-			<% @administrators.each do |admin| %>
+			<% @moderators.each do |admin| %>
 				<tr>
 					<td><%= admin.fullname %></td>
 					<td><%= admin.username %></td>
 					<td><%= admin.password %></td>
 					<td>
-						<%= link_to 'Edit', edit_admin_administrator_path(admin) %> |
-						<%= link_to 'Show', admin_administrator_path(admin) %> |
-						<%= link_to 'Delete', admin_administrator_path(admin), method: :delete %>
+						<%= link_to 'Edit', edit_admin_moderator_path(admin) %> |
+						<%= link_to 'Show', admin_moderator_path(admin) %> |
+						<%= link_to 'Delete', admin_moderator_path(admin), method: :delete %>
 					</td>
 				</tr>
 			<% end %>
@@ -28,5 +28,5 @@
 	</table>
 
 	<br>
-	<%= link_to 'New', new_admin_administrator_path %>
+	<%= link_to 'New', new_admin_moderator_path %>
 </div>

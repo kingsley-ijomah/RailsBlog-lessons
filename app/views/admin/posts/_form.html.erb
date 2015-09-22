@@ -24,8 +24,8 @@
 		<%= f.check_box :publish %>
 	</p>
 	<p>
-		<%= f.label :administrator %><br>
-		<%= f.text_field :administrator_id %>
+		<%= f.label :moderator %><br>
+		<%= f.text_field :moderator_id %>
 	</p>
 
 	<%= f.select :tag_ids, Tag.all.collect {|t| [t.name, t.id]}, {}, :multiple => true %>

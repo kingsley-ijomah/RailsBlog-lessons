@@ -1,0 +1,10 @@
+<div class="container">
+	<h2>Admin Details</h2>
+
+	<p><b>Full Name:</b> <%= @moderator.fullname %></p>
+	<p><b>Username:</b> <%= @moderator.username %></p>
+	<p><b>Password:</b> <%= @moderator.password %></p>
+	<p><b>Created:</b> <%= @moderator.created_at %></p>
+
+	<%= link_to 'Index', admin_moderators_path %>
+</div>

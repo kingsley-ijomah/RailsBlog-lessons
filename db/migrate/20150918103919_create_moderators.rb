@@ -1,6 +1,6 @@
-class CreateAdminstrators < ActiveRecord::Migration
+class CreateModerators < ActiveRecord::Migration
   def change
-    create_table :administrators do |t|
+    create_table :moderators do |t|
       t.string :fullname
       t.string :username
       t.string :password
