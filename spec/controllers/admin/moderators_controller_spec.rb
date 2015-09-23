@@ -53,7 +53,18 @@ RSpec.describe Admin::ModeratorsController, type: :controller do
 		end
 	end
 
-	describe 'GET #edit'
+	describe 'GET #edit' do
+		it 'assigns Moderator/:id to @mdoerator' do
+			moderator = double('moderator', id: '1')
+			allow(Moderator).to receive(:find).with(moderator.id).and_return(moderator)
+
+			get 'edit', id: moderator.id
+
+			expect(assigns[:moderator]).to eq moderator
+			expect(Moderator).to have_received(:find).with(moderator.id)
+		end
+	end
+
 	describe 'PUT/PATCH #update'
 	describe 'GET #show'
 	describe 'DELETE #destroy'
