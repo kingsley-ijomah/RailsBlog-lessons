@@ -93,5 +93,17 @@ RSpec.describe Admin::ModeratorsController, type: :controller do
 		end
 	end
 
-	describe 'DELETE #destroy'
+	describe 'DELETE #destroy' do
+		it 'deletes object' do
+			moderator = double('moderator', id: '1')
+			allow(Moderator).to receive(:find).with(moderator.id).and_return(moderator)
+			allow(moderator).to receive(:destroy)
+
+			delete 'destroy', id: moderator.id
+
+			expect(Moderator).to have_received(:find).with(moderator.id)
+			expect(moderator).to have_received(:destroy)
+			expect(response).to redirect_to admin_moderators_path
+		end
+	end
 end
