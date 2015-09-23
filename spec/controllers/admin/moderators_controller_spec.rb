@@ -6,14 +6,53 @@ RSpec.describe Admin::ModeratorsController, type: :controller do
 			moderators = double('moderators')
 			allow(Moderator).to receive(:all).and_return(moderators)
 
-			get :index
+			get 'index'
 
 			expect(Moderator).to have_received(:all)
 			expect(assigns[:moderators]).to eq moderators
 		end
 	end
-	describe 'GET #new'
-	describe 'POST #create'
+
+	describe 'GET #new' do 
+		it 'assigns Moderator.new to @moderator' do
+			moderator = double('moderator')
+			allow(Moderator).to receive(:new).and_return(moderator)
+
+			get 'new'
+
+			expect(Moderator).to have_received(:new)
+			expect(assigns[:moderator]).to eq moderator
+		end
+	end
+
+	describe 'POST #create' do
+		it 'valid post' do
+			moderator = double('moderator')
+			attributes = attributes_for(:moderator)
+			allow(Moderator).to receive(:new).with(attributes).and_return(moderator)
+			allow(moderator).to receive(:save).and_return(true)
+
+			post 'create', moderator: attributes
+
+			expect(response).to redirect_to admin_moderators_path
+			expect(Moderator).to have_received(:new).with(attributes)
+			expect(moderator).to have_received(:save)
+		end
+
+		it 'invalid post' do
+			moderator = double('moderator')
+			attributes = attributes_for(:moderator)
+			allow(Moderator).to receive(:new).with(attributes).and_return(moderator)
+			allow(moderator).to receive(:save).and_return(false)
+
+			post 'create', moderator: attributes
+
+			expect(response).to render_template 'new'
+			expect(Moderator).to have_received(:new).with(attributes)
+			expect(moderator).to have_received(:save)
+		end
+	end
+
 	describe 'GET #edit'
 	describe 'PUT/PATCH #update'
 	describe 'GET #show'
