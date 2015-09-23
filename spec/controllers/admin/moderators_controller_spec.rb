@@ -65,7 +65,33 @@ RSpec.describe Admin::ModeratorsController, type: :controller do
 		end
 	end
 
-	describe 'PUT/PATCH #update'
-	describe 'GET #show'
+	describe 'PUT/PATCH #update' do 
+		it 'valid update' do
+			moderator = double('moderator', id: '1')
+			attributes = attributes_for(:moderator)
+			allow(Moderator).to receive(:find).with(moderator.id).and_return(moderator)
+			allow(moderator).to receive(:update).with(attributes).and_return(true)
+
+			put 'update', moderator: attributes, id: moderator.id
+
+			expect(response).to redirect_to admin_moderators_path
+			expect(Moderator).to have_received(:find)
+			expect(moderator).to have_received(:update).with(attributes)
+		end
+
+		it 'invalid update' do 
+			moderator = double('moderator', id: '1')
+			attributes = attributes_for(:moderator)
+			allow(Moderator).to receive(:find).with(moderator.id).and_return(moderator)
+			allow(moderator).to receive(:update).with(attributes).and_return(false)
+
+			put 'update', moderator: attributes, id: moderator.id
+
+			expect(response).to render_template 'edit'
+			expect(Moderator).to have_received(:find)
+			expect(moderator).to have_received(:update).with(attributes)
+		end
+	end
+
 	describe 'DELETE #destroy'
 end
