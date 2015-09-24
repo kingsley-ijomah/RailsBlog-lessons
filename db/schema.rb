@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 20150921222618) do
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "status",     default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end
