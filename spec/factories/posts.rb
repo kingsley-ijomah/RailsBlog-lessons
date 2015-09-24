@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :post do
     title Faker::Name.title
 		content Faker::Lorem.sentence
-		publish 'f'
+		publish [true, false].sample
 		association :moderator, factory: :moderator
 	end
 end
