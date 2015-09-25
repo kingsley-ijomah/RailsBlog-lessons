@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'Create a post' do
-
 	scenario 'with in-valid fields' do
 		given_that_i_have_no_posts
 		given_that_i_visit_post_new_path

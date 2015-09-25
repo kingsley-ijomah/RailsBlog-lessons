@@ -51,5 +51,4 @@ group :test do
   gem 'shoulda-matchers', '~> 2.8.0'
 	gem 'capybara', '~> 2.4.4'
 	gem 'launchy', '~> 2.4.3'
-  gem 'database_cleaner', '~> 1.4.1'
 end
