@@ -18,7 +18,7 @@ def and_i_visit_posts_path
 end
 
 def when_i_click_on_delete_post
-	within '.post_actions' do
+	within '.article-actions' do
 		click_link 'Delete'
 	end
 end
