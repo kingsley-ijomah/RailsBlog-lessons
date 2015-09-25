@@ -19,6 +19,7 @@ feature 'Create a moderator' do
 end
 
 # in valid fields
+
 def given_that_i_have_no_moderators
 	expect(Moderator.count).to eq 0
 end
