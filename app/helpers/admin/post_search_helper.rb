@@ -1,0 +1,2 @@
+module Admin::PostSearchHelper
+end
