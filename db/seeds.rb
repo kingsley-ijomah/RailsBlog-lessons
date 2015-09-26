@@ -10,5 +10,7 @@ post = Post.create(title: 'Test title', content: 'Test content', publish: true, 
 tag = Tag.create(name: 'Test tag', status: true)
 post_tag = PostTag.create(post: post, tag: tag)
 visitor = Visitor.create(fullname: 'Test visitor', email: 'visitor@email.com', status: true)
-comment = Comment.create(message: 'Test message', status: true, post: post, visitor: visitor)
+comment = Comment.create([
+	{message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', status: true, post: post, visitor: visitor},
+	{message: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', status: false, post: post, visitor: visitor}])
 message = Message.create(content: 'Test message', visitor: visitor)
