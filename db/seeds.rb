@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+moderator = Moderator.create(fullname: 'Kingsley', username: 'kingley@example.com', password: 'secret')
+post = Post.create(title: 'Test title', content: 'Test content', publish: true, moderator: moderator)
+tag = Tag.create(name: 'Test tag', status: true)
+post_tag = PostTag.create(post: post, tag: tag)
+visitor = Visitor.create(fullname: 'Test visitor', email: 'visitor@email.com', status: true)
+comment = Comment.create(message: 'Test message', status: true, post: post, visitor: visitor)
+message = Message.create(content: 'Test message', visitor: visitor)

@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20150925110459) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "message"
-    t.string   "fullname"
     t.boolean  "status",     default: false, null: false
     t.integer  "post_id"
     t.integer  "visitor_id"

@@ -15,7 +15,9 @@
 			<% @posts.each do |post| %>
 				<tr class="article-title">
 					<td><%= post.title %></td>
-					<td><%= post.content %></td>
+					<td>
+						<%= post.content %> ( <%= "created #{time_ago_in_words(post.created_at)} ago" %> )
+					</td>
 					<td><%= post.publish %></td>
 					<td class="article-actions">
 						<%= link_to 'Edit', edit_admin_post_path(post) %> |
