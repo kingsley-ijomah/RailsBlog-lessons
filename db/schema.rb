@@ -27,9 +27,10 @@ ActiveRecord::Schema.define(version: 20150925110459) do
 
   create_table "messages", force: :cascade do |t|
     t.text     "content"
+    t.boolean  "status",     default: false, null: false
     t.integer  "visitor_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "messages", ["visitor_id"], name: "index_messages_on_visitor_id"

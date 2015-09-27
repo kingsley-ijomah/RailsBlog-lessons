@@ -11,7 +11,7 @@ class Admin::CommentsController < ApplicationController
 
   def update
   	@comment = Comment.find(params[:id])
-  	@comment.update_attribute('status', params[:status])
+  	@comment.update(status: params[:status])
 
   	redirect_to :back
   end

@@ -13,4 +13,4 @@ visitor = Visitor.create(fullname: 'Test visitor', email: 'visitor@email.com', s
 comment = Comment.create([
 	{message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', status: true, post: post, visitor: visitor},
 	{message: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', status: false, post: post, visitor: visitor}])
-message = Message.create(content: 'Test message', visitor: visitor)
+message = Message.create(content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', visitor: visitor, status: false)
