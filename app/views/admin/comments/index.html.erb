@@ -1,14 +1,12 @@
 <h1>Comments</h1>
 
-<table class="table table-bordered table-hover">
-	<thead>
-		<tr>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td></td>
-		</tr>
-	</tbody>
-</table>
+<%= link_to 'Approved', admin_comments_path(approved: true) %>
+<%= link_to 'Not Approved', admin_comments_path(approved: false) %><br>
+
+<% @comments.each do |comment| %>
+	<p>
+		<b><%= comment.visitor.fullname %></b> posted message on <b><%= comment.post.title %></b><br>
+		<%= time_ago_in_words(comment.created_at) %><br>
+		<%= comment.message %>
+	</p>
+<% end %>
