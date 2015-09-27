@@ -1,6 +1,13 @@
 <div class="container">
 	<h2>Search Results</h2>
 
+	<%= form_tag(admin_post_search_index_path, method: 'get') do %>
+		<%= text_field_tag(:search) %>
+		<%= submit_tag("Search") %>
+	<% end %>
+
+	<br>
+
 	<table class="table table-bordered">
 	  <thead>
 			<tr>

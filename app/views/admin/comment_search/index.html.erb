@@ -17,11 +17,11 @@
 		<%= comment.message %>
 	</p>
 	<p>
-		<% if params[:approved] == 'false' %>
+		<% if comment.status == false %>
 			<%= link_to 'Approve', admin_comment_path(comment, status: true), method: :put %>
 		<% end %>
 
-		<% if params[:approved] == 'true' %>
+		<% if comment.status == true %>
 			<%= link_to 'Un-approve', admin_comment_path(comment, status: false), method: :put %>
 		<% end %>
 

@@ -58,5 +58,6 @@ Rails.application.routes.draw do
     resources :moderators, :posts, :tags
     resources :post_search, only: [:index]
     resources :comments, only: [:index, :destroy, :update]
+    resources :comment_search, only: [:index]
   end
 end
