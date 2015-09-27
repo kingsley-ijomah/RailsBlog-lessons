@@ -1,0 +1,15 @@
+<h1>Visitors</h1>
+
+<%= link_to 'Posts', admin_posts_path %>
+
+<br>
+
+<% @visitors.each do |visitor| %>
+	<p>
+		<%= visitor.fullname %> <br>
+		<%= visitor.email %> <br>
+		<%= visitor.status %> <br>
+		<%= time_ago_in_words(visitor.created_at) %>
+	</p>
+<% end %>
+

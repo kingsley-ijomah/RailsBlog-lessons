@@ -59,5 +59,6 @@ Rails.application.routes.draw do
     resources :post_search, only: [:index]
     resources :comments, only: [:index, :destroy, :update]
     resources :comment_search, only: [:index]
+    resources :visitors, only: [:index]
   end
 end
