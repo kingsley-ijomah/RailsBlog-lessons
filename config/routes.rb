@@ -57,6 +57,6 @@ Rails.application.routes.draw do
   namespace :admin do 
     resources :moderators, :posts, :tags
     resources :post_search, only: [:index]
-    resources :comments, only: [:index]
+    resources :comments, only: [:index, :destroy, :update]
   end
 end
