@@ -5,12 +5,43 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-moderator = Moderator.create(fullname: 'Kingsley', username: 'kingley@example.com', password: 'secret')
-post = Post.create(title: 'Test title', content: 'Test content', publish: true, moderator: moderator)
-tag = Tag.create(name: 'Test tag', status: true)
-post_tag = PostTag.create(post: post, tag: tag)
-visitor = Visitor.create(fullname: 'Test visitor', email: 'visitor@email.com', status: true)
-comment = Comment.create([
-	{message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', status: true, post: post, visitor: visitor},
-	{message: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', status: false, post: post, visitor: visitor}])
-message = Message.create(content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', visitor: visitor, status: false)
+
+500.times do
+	moderator = Moderator.create(
+		fullname: Faker::Name.name, 
+		username: Faker::Internet.email, 
+		password: Faker::Internet.password)
+
+	post = Post.create(
+		title: Faker::Lorem.sentence, 
+		content: Faker::Lorem.paragraph, 
+		publish: [true, false].sample, 
+		moderator: moderator)
+
+	tag = Tag.create(
+		name: Faker::Company.suffix, 
+		status: [true, false].sample)
+
+	post_tag = PostTag.create(post: post, tag: tag)
+
+	visitor = Visitor.create(
+		fullname: Faker::Name.name, 
+		email: Faker::Internet.email, 
+		status: [true, false].sample)
+
+	comment = Comment.create([
+		{message: Faker::Lorem.sentence, 
+			status: [true, false].sample, 
+			post: post, 
+			visitor: visitor
+			},
+		{message: Faker::Lorem.sentence, 
+			status: [true, false].sample, 
+			post: post, 
+			visitor: visitor}
+	])
+	message = Message.create(
+		content: Faker::Lorem.sentence, 
+		visitor: visitor, 
+		status: [true, false].sample)
+end

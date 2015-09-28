@@ -21,8 +21,7 @@
 		<tbody>
 			<% @posts.each do |post| %>
 				<tr class="article-title">
-					<td><%= post.title %></td>
-					<td><%= post.content %></td>
+					<td><%= truncate(post.title, length: 60, separator: ' ') %></td>
 					<td><%= post.publish %></td>
 					<td class="article-actions">
 						<%= link_to 'Edit', edit_admin_post_path(post) %> |
@@ -35,5 +34,8 @@
 	</table>
 
 	<br>
-	<%= link_to 'New', new_admin_post_path %>
+	<%= link_to 'New Post', new_admin_post_path %>
+	<br>
+
+	<%= paginate @posts %>
 </div>

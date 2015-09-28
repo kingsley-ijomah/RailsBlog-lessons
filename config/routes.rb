@@ -61,5 +61,6 @@ Rails.application.routes.draw do
     resources :comment_search, only: [:index]
     resources :visitors, only: [:index]
     resources :messages, only: [:index, :update, :destroy, :show]
+    resources :dashboard, only: [:index]
   end
 end
