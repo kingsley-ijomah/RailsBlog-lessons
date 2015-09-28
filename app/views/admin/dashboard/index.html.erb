@@ -28,3 +28,41 @@
 		<% end %>
 	</tbody>
 </table>
+
+<h2>Comments</h2>
+<%= link_to 'View all comments', admin_comments_path %>
+<% @comments.each do |comment| %>
+	<div>
+		<%= comment.visitor.fullname %> <br>
+		<%= time_ago_in_words(comment.created_at) %> <br>
+		<%= truncate(comment.message, length: 40, separator: ' ') %>
+	</div>
+	<hr>
+<% end %>
+
+<h2>Visitors</h2>
+<%= link_to 'View all visitors', admin_visitors_path %>
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>Full name</th>
+			<th>Email</th>
+			<th>Status</th>
+			<th>Created</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @visitors.each do |visitor| %>
+			<tr>
+				<td><%= visitor.fullname %></td>
+				<td><%= visitor.email %></td>
+				<td><%= visitor.status %></td>
+				<td><%= time_ago_in_words(visitor.created_at) %></td>
+				<td>
+					<%= link_to 'del', admin_visitor_path(visitor), method: :delete %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

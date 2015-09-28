@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-500.times do
+100.times do
 	moderator = Moderator.create(
 		fullname: Faker::Name.name, 
 		username: Faker::Internet.email, 
@@ -15,7 +15,7 @@
 	post = Post.create(
 		title: Faker::Lorem.sentence, 
 		content: Faker::Lorem.paragraph, 
-		publish: [true, false].sample, 
+		publish: true, 
 		moderator: moderator)
 
 	tag = Tag.create(
@@ -32,7 +32,7 @@
 	comment = Comment.create([
 		{message: Faker::Lorem.sentence, 
 			status: [true, false].sample, 
-			post: post, 
+			post: post,
 			visitor: visitor
 			},
 		{message: Faker::Lorem.sentence, 
@@ -40,6 +40,7 @@
 			post: post, 
 			visitor: visitor}
 	])
+
 	message = Message.create(
 		content: Faker::Lorem.sentence, 
 		visitor: visitor, 
