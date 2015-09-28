@@ -37,7 +37,7 @@ class Admin::PostsController < ApplicationController
 	def destroy
 		@post.destroy
 
-		redirect_to admin_posts_url
+		redirect_to :back
 	end
 
 	private
