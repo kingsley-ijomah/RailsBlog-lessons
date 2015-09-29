@@ -45,11 +45,12 @@
 		content: Faker::Lorem.sentence, 
 		visitor: visitor, 
 		status: [true, false].sample)
+end
 
-	setting = Setting.create(
+# only one record should ever exist
+setting = Setting.create(
 		site_name: Faker::Company.name,
 		post_per_page: 20,
 		under_maintenance: false,
 		prevent_commenting: false,
 		tag_visibility: true)
-end
