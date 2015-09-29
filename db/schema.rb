@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925110459) do
+ActiveRecord::Schema.define(version: 20150929061146) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "message"
@@ -63,6 +63,14 @@ ActiveRecord::Schema.define(version: 20150925110459) do
   end
 
   add_index "posts", ["moderator_id"], name: "index_posts_on_moderator_id"
+
+  create_table "settings", force: :cascade do |t|
+    t.string  "site_name"
+    t.integer "post_per_page",      default: 20,    null: false
+    t.boolean "under_maintenance",  default: false, null: false
+    t.boolean "prevent_commenting", default: false, null: false
+    t.boolean "tag_visibility",     default: true,  null: false
+  end
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
