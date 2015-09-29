@@ -45,4 +45,11 @@
 		content: Faker::Lorem.sentence, 
 		visitor: visitor, 
 		status: [true, false].sample)
+
+	setting = Setting.create(
+		site_name: Faker::Company.name,
+		post_per_page: 20,
+		under_maintenance: false,
+		prevent_commenting: false,
+		tag_visibility: true)
 end
