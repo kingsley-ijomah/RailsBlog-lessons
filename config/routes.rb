@@ -62,5 +62,6 @@ Rails.application.routes.draw do
     resources :visitors, only: [:index, :destroy]
     resources :messages, only: [:index, :update, :destroy, :show]
     resources :dashboard, only: [:index]
+    resources :settings, only: [:new, :create, :edit, :update, :destroy]
   end
 end
