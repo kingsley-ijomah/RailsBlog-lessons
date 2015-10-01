@@ -1,5 +1,6 @@
 class Admin::SettingsController < ApplicationController
   def new
+    @setting = Setting.new
   end
 
   def create
