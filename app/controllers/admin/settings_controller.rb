@@ -1,6 +1,11 @@
 class Admin::SettingsController < ApplicationController
   def new
-    @setting = Setting.new
+    if Setting.exists?
+      @setting = Setting.first
+      redirect_to edit_admin_setting_url(@setting)
+    else
+      @setting = Setting.new
+    end
   end
 
   def create
