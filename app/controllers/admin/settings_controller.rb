@@ -4,7 +4,13 @@ class Admin::SettingsController < ApplicationController
   end
 
   def create
+    @setting = Setting.new(settings_params)
 
+    if @setting.save
+      redirect_to edit_admin_setting_url(@setting)
+    else
+      render 'new'
+    end
   end
 
   def edit
