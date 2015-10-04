@@ -6,6 +6,5 @@ class Post < ActiveRecord::Base
 
   validates :title, presence: true
 	validates :content, presence: true
-	validates :publish, presence: true
 	validates :moderator_id, presence: true
 end
