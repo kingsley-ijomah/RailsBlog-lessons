@@ -23,14 +23,7 @@
 				<tr class="article-title">
 					<td><%= truncate(post.title, length: 60, separator: ' ') %></td>
 					<td>
-						<% 
-							if post.publish
-								status = 'Active'
-							else
-								status = 'Pending'
-							end
-						%>
-						<%= status %>
+						<%= status_to_string(post.publish, truthy: 'active', falsey: 'pending') %>
 					</td>
 					<td class="article-actions">
 						<%= link_to 'Edit', edit_admin_post_path(post) %> |
