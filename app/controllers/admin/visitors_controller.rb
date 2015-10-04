@@ -8,4 +8,5 @@ class Admin::VisitorsController < ApplicationController
   	@visitor.destroy
 
   	redirect_to :back
+  end
 end

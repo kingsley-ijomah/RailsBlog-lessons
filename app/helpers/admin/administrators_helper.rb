@@ -1,9 +1,9 @@
 module Admin::AdministratorsHelper
 	def status_to_string(status, truthy: nil, falsey: nil)
 		if status
-			truthy.capitalize
+			truthy
 		else
-			falsey.capitalize
+			falsey
 		end
 	end
 end

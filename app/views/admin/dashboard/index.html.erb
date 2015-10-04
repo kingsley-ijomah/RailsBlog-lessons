@@ -57,7 +57,7 @@
 			<tr>
 				<td><%= visitor.fullname %></td>
 				<td><%= visitor.email %></td>
-				<td><%= visitor.status %></td>
+				<td><%= status_to_string(visitor.status, truthy: 'active', falsey: 'pending') %></td>
 				<td><%= time_ago_in_words(visitor.created_at) %></td>
 				<td>
 					<%= link_to 'del', admin_visitor_path(visitor), method: :delete %>
