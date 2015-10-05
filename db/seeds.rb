@@ -19,8 +19,7 @@
 		moderator: moderator)
 
 	tag = Tag.create(
-		name: Faker::Company.suffix, 
-		status: [true, false].sample)
+		name: Faker::Company.suffix)
 
 	post_tag = PostTag.create(post: post, tag: tag)
 
