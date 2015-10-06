@@ -63,5 +63,6 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :update, :destroy, :show]
     resources :dashboard, only: [:index]
     resources :settings, only: [:new, :create, :edit, :update, :destroy]
+    resources :sessions, only: [:new, :create, :destroy]
   end
 end

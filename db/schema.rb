@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20150929061146) do
   create_table "moderators", force: :cascade do |t|
     t.string   "fullname"
     t.string   "username"
-    t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "post_tags", force: :cascade do |t|
