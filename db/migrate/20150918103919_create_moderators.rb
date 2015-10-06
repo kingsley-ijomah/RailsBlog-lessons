@@ -3,7 +3,7 @@ class CreateModerators < ActiveRecord::Migration
     create_table :moderators do |t|
       t.string :fullname
       t.string :username
-      t.string :password
+      t.string :password_digest
 
       t.timestamps null: false
     end
