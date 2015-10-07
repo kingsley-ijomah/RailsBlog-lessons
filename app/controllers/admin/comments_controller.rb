@@ -1,4 +1,4 @@
-class Admin::CommentsController < ApplicationController
+class Admin::CommentsController < Admin::ApplicationController
   def index
   	if params[:approved] == 'true'
   		@comments = Comment.where(status: true)

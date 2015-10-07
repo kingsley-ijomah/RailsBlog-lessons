@@ -1,4 +1,4 @@
-class Admin::VisitorsController < ApplicationController
+class Admin::VisitorsController < Admin::ApplicationController
   def index
   	@visitors = Visitor.all
   end

@@ -1,4 +1,4 @@
-class Admin::ModeratorsController < ApplicationController
+class Admin::ModeratorsController < Admin::ApplicationController
 	before_action :set_admin, only: [:edit, :update, :destroy]
 
 	def index
