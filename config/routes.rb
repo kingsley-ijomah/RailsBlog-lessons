@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   get '/login' => 'admin/sessions#new'
+  get '/logout' => 'admin/sessions#destroy'
 
   namespace :admin do 
     resources :moderators, :posts, :tags
