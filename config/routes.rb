@@ -54,6 +54,8 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  get '/login' => 'admin/sessions#new'
+
   namespace :admin do 
     resources :moderators, :posts, :tags
     resources :post_search, only: [:index]
