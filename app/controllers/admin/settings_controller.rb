@@ -1,4 +1,6 @@
 class Admin::SettingsController < Admin::ApplicationController
+  before_action :set_model, only: [:edit, :update, :destroy]
+
   def new
     if Setting.exists?
       @setting = Setting.first
@@ -19,13 +21,24 @@ class Admin::SettingsController < Admin::ApplicationController
   end
 
   def edit
-    @setting = Setting.find(params[:id])
+    # set_model
   end
 
   def update
+    if @setting.update(settings_params)
+      redirect_to edit_admin_setting_url(@setting)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+  end
+
+  private
+
+  def set_model
+    @setting = Setting.find(params[:id])
   end
 
   def settings_params
