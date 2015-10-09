@@ -3,14 +3,14 @@ class Admin::TagsController < Admin::ApplicationController
 
 	def new
 		@tag = Tag.new
-		@tags = Tag.all
+		@tags = Tag.all.order(id: :desc)
 	end
 
 	def create
 		tag_params[:name].split(",").map do |tag|
 			Tag.new(name:tag).save
 		end
-
+		flash[:notice] = "Tags created successfully"
 		redirect_to new_admin_tag_url
 	end
 
@@ -23,8 +23,10 @@ class Admin::TagsController < Admin::ApplicationController
 	def update
 
 		if @tag.update(tag_params)
+			flash[:notice] = "Tag updated successfully"
 			redirect_to new_admin_tag_url
 		else
+			flash[:alert] = "There was a problem creating Tag"
 			render 'edit'
 		end
 	end
@@ -32,6 +34,7 @@ class Admin::TagsController < Admin::ApplicationController
 	def destroy
 		@tag.destroy
 
+		flash[:notice] = "Tag deleted successfully"
 		redirect_to new_admin_tag_url
 	end
 
