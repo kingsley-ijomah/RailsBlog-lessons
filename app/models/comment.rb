@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  has_many :notifications as: :notifiable
+  has_many :notifications, as: :notifiable, dependent: :destroy
   belongs_to :post
   belongs_to :visitor
 

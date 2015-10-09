@@ -67,5 +67,6 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resources :settings, only: [:new, :create, :edit, :update]
     resources :sessions, only: [:new, :create, :destroy]
+    resources :notifications, only: [:index, :destroy]
   end
 end
