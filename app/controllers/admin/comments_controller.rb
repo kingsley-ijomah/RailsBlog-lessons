@@ -13,6 +13,7 @@ class Admin::CommentsController < Admin::ApplicationController
   	@comment = Comment.find(params[:id])
   	@comment.update(status: params[:status])
 
+    flash[:notice] = "Comment updated successfully"
   	redirect_to :back
   end
 
@@ -20,6 +21,7 @@ class Admin::CommentsController < Admin::ApplicationController
   	@comment = Comment.find(params[:id])
   	@comment.destroy
 
+    flash[:notice] = "Comment deleted successfully"
   	redirect_to admin_comments_url
   end
 end
