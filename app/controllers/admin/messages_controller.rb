@@ -14,6 +14,7 @@ class Admin::MessagesController < Admin::ApplicationController
   	@message = Message.find(params[:id])
   	@message.update(status: params[:status])
 
+    flash[:notice] = "Message updated successfully"
   	redirect_to :back
   end
 
@@ -21,6 +22,7 @@ class Admin::MessagesController < Admin::ApplicationController
   	@message = Message.find(params[:id])
   	@message.destroy
 
+    flash[:notice] = "Message deleted successfully"
   	redirect_to admin_messages_url
   end
 end

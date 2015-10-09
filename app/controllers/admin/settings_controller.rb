@@ -14,8 +14,10 @@ class Admin::SettingsController < Admin::ApplicationController
     @setting = Setting.new(settings_params)
 
     if @setting.save
+      flash[:notice] = "Setting created successfully"
       redirect_to edit_admin_setting_url(@setting)
     else
+      flash[:alert] = "There was a problem creating Setting"
       render 'new'
     end
   end
@@ -26,8 +28,10 @@ class Admin::SettingsController < Admin::ApplicationController
 
   def update
     if @setting.update(settings_params)
+      flash[:notice] = "Setting updated successfully"
       redirect_to edit_admin_setting_url(@setting)
     else
+      flash[:alert] = "There was a problem updating Setting"
       render 'edit'
     end
   end
