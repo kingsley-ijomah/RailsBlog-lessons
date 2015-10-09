@@ -13,8 +13,10 @@ class Admin::ModeratorsController < Admin::ApplicationController
 		@moderator = Moderator.new(admin_params)
 
 		if @moderator.save
+			flash[:notice] = "Moderator created successfully"
 			redirect_to admin_moderators_url
 		else
+			flash[:alert] = "There was a problem creating Moderator"
 			render 'new'
 		end
 	end
@@ -25,15 +27,17 @@ class Admin::ModeratorsController < Admin::ApplicationController
 	def update
 
 		if @moderator.update(admin_params)
+			flash[:notice] = "Moderator updated successfully"
 			redirect_to admin_moderators_url
 		else
+			flash[:alert] = "There was a problem updating Moderator"
 			render 'edit'
 		end
 	end
 
 	def destroy
 		@moderator.destroy
-
+		flash[:notice] = "Moderator deleted successfully"
 		redirect_to admin_moderators_url
 	end
 
