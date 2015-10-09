@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+  has_many :notifications as: :notifiable
   belongs_to :post
   belongs_to :visitor
 
