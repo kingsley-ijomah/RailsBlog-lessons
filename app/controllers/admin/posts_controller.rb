@@ -13,8 +13,10 @@ class Admin::PostsController < Admin::ApplicationController
 		@post = Post.new(post_params)
 
 		if @post.save
+			flash[:notice] = "Post created successfully"
 			redirect_to admin_posts_url
 		else
+			flash[:alert] = "There was a problem creating Post"
 			render 'new'
 		end
 	end
@@ -28,15 +30,17 @@ class Admin::PostsController < Admin::ApplicationController
 	def update
 
 		if @post.update(post_params)
+			flash[:notice] = "Post updated successfully"
 			redirect_to admin_posts_url
 		else
+			flash[:alert] = "There was a problem updating Post"
 			render 'edit'
 		end
 	end
 
 	def destroy
 		@post.destroy
-
+		flash[:notice] = "Post deleted successfully"
 		redirect_to :back
 	end
 
