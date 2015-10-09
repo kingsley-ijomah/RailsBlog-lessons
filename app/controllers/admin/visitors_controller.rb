@@ -7,6 +7,7 @@ class Admin::VisitorsController < Admin::ApplicationController
   	@visitor = Visitor.find(params[:id])
   	@visitor.destroy
 
+  	flash[:notice] = "Visitor deleted successfully"
   	redirect_to :back
   end
 end

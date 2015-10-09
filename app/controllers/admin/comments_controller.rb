@@ -22,6 +22,6 @@ class Admin::CommentsController < Admin::ApplicationController
   	@comment.destroy
 
     flash[:notice] = "Comment deleted successfully"
-  	redirect_to admin_comments_url
+  	redirect_to :back
   end
 end
