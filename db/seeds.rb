@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-100.times do
+30.times do
 	moderator = Moderator.create(
 		fullname: Faker::Name.name, 
 		username: Faker::Internet.email, 
@@ -44,6 +44,13 @@
 		content: Faker::Lorem.sentence, 
 		visitor: visitor, 
 		status: [true, false].sample)
+
+	notifiable = [comment[0], visitor].sample
+	notifiable_type = notifiable.class.name
+
+	notification = Notification.create(
+		notifiable_id: notifiable.id,
+		notifiable_type: notifiable_type)
 end
 
 # only one record should ever exist
