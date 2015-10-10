@@ -53,10 +53,16 @@
 		notifiable_type: notifiable_type)
 end
 
+# global moderator
+Moderator.create(
+	fullname: "Kingsley Ijomah", 
+	username: "kingsley@example.com", 
+	password: "example")
+
 # only one record should ever exist
-setting = Setting.create(
-		site_name: Faker::Company.name,
-		post_per_page: 20,
-		under_maintenance: false,
-		prevent_commenting: false,
-		tag_visibility: true)
+Setting.create(
+	site_name: Faker::Company.name,
+	post_per_page: 20,
+	under_maintenance: false,
+	prevent_commenting: false,
+	tag_visibility: true)
