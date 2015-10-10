@@ -1,16 +1,23 @@
 <h1>Notifications</h1>
 
+<%= link_to 'Dismiss All', dismiss_all_notifications_path, method: :delete %>
+
 <table class="table table-bordered table-hover">
 	<tbody>
-		<tr>
-			<td><b>Kingsley Ijomah</b> registered as a visitor</td>
-			<td>4 hours ago</p></td>
-			<td><%= link_to 'Dismiss', '#'%></td>
-		</tr>
-		<tr>
-			<td><b>Jane Doe</b> wrote a comment as a visitor</td>
-			<td>6 hours ago</td>
-			<td><%= link_to 'Dismiss', '#'%></td>
-		</tr>
+		<% @visitor_notifications.each do |visitor|%>
+			<tr>
+				<td><b><%= visitor.notifiable.fullname %></b> registered as a visitor</td>
+				<td><%= time_ago_in_words(visitor.notifiable.created_at) %></td>
+				<td><%= link_to 'Dismiss', admin_notification_path(visitor.id), method: :delete, data: {confirm: 'Are you sure'} %></td>
+			</tr>
+		<% end %>
+
+		<% @comment_notifications.each do |comment|%>
+			<tr>
+				<td><b><%= comment.notifiable.visitor.fullname %></b> wrote a comment as a visitor</td>
+				<td><%= time_ago_in_words(comment.notifiable.created_at) %></td>
+				<td><%= link_to 'Dismiss', admin_notification_path(comment.id), method: :delete, data: {confirm: 'Are you sure'} %></td>
+			</tr>
+		<% end %>
 	</tbody>
 </table>
