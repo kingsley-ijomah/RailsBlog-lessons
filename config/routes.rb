@@ -69,4 +69,6 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     resources :notifications, only: [:index, :destroy]
   end
+
+  match 'dismiss_all_notifications', to: 'admin/notifications#delete_all', via: :delete
 end
