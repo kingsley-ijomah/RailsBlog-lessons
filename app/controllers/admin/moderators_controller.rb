@@ -1,4 +1,6 @@
 class Admin::ModeratorsController < Admin::ApplicationController
+
+	before_filter :authorize, except: [:new, :create]
 	before_action :set_admin, only: [:edit, :update, :destroy]
 
 	def index
