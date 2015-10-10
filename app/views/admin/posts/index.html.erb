@@ -6,7 +6,7 @@
 		<%= submit_tag("Search") %>
 	<% end %>
 
-	<br>
+	<p><%= link_to 'New Post', new_admin_post_path %></p>
 
 	<table class="table table-bordered">
 	  <thead>
@@ -35,9 +35,5 @@
 		</tbody>
 	</table>
 
-	<br>
-	<%= link_to 'New Post', new_admin_post_path %>
-	<br>
-
-	<%= paginate @posts %>
+	<p><%= paginate @posts %></p>
 </div>

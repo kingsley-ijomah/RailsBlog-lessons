@@ -1,6 +1,8 @@
 <h1>Notifications</h1>
 
-<%= link_to 'Dismiss All', dismiss_all_notifications_path, method: :delete %>
+<% if Notification.any? %>
+	<%= link_to 'Dismiss All', dismiss_all_notifications_path, method: :delete %>
+<% end %>
 
 <table class="table table-bordered table-hover">
 	<tbody>

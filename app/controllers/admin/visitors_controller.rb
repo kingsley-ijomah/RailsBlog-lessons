@@ -1,6 +1,6 @@
 class Admin::VisitorsController < Admin::ApplicationController
   def index
-  	@visitors = Visitor.all
+  	@visitors = Visitor.all.page params[:page]
   end
 
   def destroy

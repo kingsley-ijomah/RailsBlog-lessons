@@ -4,7 +4,7 @@ class Admin::ModeratorsController < Admin::ApplicationController
 	before_action :set_admin, only: [:edit, :update, :destroy]
 
 	def index
-		@moderators = Moderator.all
+		@moderators = Moderator.all.page params[:page]
 	end
 
 	def new

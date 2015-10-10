@@ -28,3 +28,5 @@
 		<%= link_to 'Delete', admin_comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
 	</p>
 <% end %>
+
+<p><%= paginate @comments %></p>

@@ -1,5 +1,8 @@
 <div class="container">
 	<h1>Moderators</h1>
+	<p>
+		<%= link_to 'New', new_admin_moderator_path %>
+	</p>
 
 	<table class="table table-bordered">
 	  <thead>
@@ -24,6 +27,5 @@
 		</tbody>
 	</table>
 
-	<br>
-	<%= link_to 'New', new_admin_moderator_path %>
+	<p><%= paginate @moderators %></p>
 </div>
