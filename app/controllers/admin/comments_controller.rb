@@ -1,9 +1,9 @@
 class Admin::CommentsController < Admin::ApplicationController
   def index
   	if params[:approved] == 'true'
-  		@comments = Comment.where(status: true).page params[:page]
+  		@comments = Comment.where(status: true).order(id: :desc).page params[:page]
   	elsif params[:approved] == 'false'
-  		@comments = Comment.where(status: false).page params[:page]
+  		@comments = Comment.where(status: false).order(id: :desc).page params[:page]
   	else
   		@comments = []
   	end

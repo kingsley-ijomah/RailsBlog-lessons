@@ -2,7 +2,7 @@ class Admin::PostsController < Admin::ApplicationController
 	before_action :set_post, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@posts = Post.all.page params[:page]
+		@posts = Post.all.order(id: :desc).page params[:page]
 	end
 
 	def new
