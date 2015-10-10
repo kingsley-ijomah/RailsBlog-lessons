@@ -29,4 +29,6 @@
 	</p>
 <% end %>
 
-<p><%= paginate @comments %></p>
+<% if @comments.any? %>
+	<p><%= paginate @comments %></p>
+<% end %>

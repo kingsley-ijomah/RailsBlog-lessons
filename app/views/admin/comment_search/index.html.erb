@@ -28,3 +28,9 @@
 		<%= link_to 'Delete', admin_comment_path(comment), method: :delete %>
 	</p>
 <% end %>
+
+<p>
+	<% if @comments.any? %>
+		<%= paginate @comments %>
+	<% end %>
+</p>

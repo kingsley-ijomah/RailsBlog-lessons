@@ -6,7 +6,10 @@
 		<%= submit_tag("Search") %>
 	<% end %>
 
-	<p><%= link_to 'New Post', new_admin_post_path %></p>
+	<p>
+		<%= link_to 'List Posts', admin_posts_path %>
+		<%= link_to 'New Post', new_admin_post_path %>
+	</p>
 
 	<table class="table table-bordered">
 	  <thead>

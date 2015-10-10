@@ -36,3 +36,9 @@
 		</tbody>
 	</table>
 </div>
+
+<p>
+	<% if @posts.any? %>
+		<%= paginate @posts %>
+	<% end %>
+</p>
