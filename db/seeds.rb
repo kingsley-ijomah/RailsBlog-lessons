@@ -26,8 +26,7 @@
 
 	visitor = Visitor.create(
 		fullname: Faker::Name.name, 
-		email: Faker::Internet.email, 
-		status: [true, false].sample)
+		email: Faker::Internet.email)
 
 	comment = Comment.create([
 		{message: Faker::Lorem.sentence, 

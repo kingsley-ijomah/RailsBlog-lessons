@@ -8,7 +8,6 @@
 	<p>
 		<%= visitor.fullname %> <br>
 		<%= visitor.email %> <br>
-		<%= status_to_string(visitor.status, truthy: 'active', falsey: 'pending') %> <br>
 		<%= time_ago_in_words(visitor.created_at) %>
 	</p>
 <% end %>
