@@ -10,7 +10,8 @@
 	moderator = Moderator.create(
 		fullname: Faker::Name.name, 
 		username: Faker::Internet.email, 
-		password: Faker::Internet.password)
+		password: Faker::Internet.password,
+		global: false)
 
 	post = Post.create(
 		title: Faker::Lorem.sentence, 
@@ -57,7 +58,8 @@ end
 Moderator.create(
 	fullname: "Kingsley Ijomah", 
 	username: "kingsley@example.com", 
-	password: "example")
+	password: "example",
+	global: true)
 
 # only one record should ever exist
 Setting.create(
