@@ -1,8 +1,6 @@
 <%= form_for [:admin, @moderator] do |f| %>
 	<% if @moderator.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@moderator.errors.count, "error") %> prohibited this moderator from being saved:</h2>
-
+    <div id="validation_errors">
       <ul>
       <% @moderator.errors.full_messages.each do |message| %>
         <li><%= message %></li>

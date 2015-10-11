@@ -4,6 +4,7 @@ class CreateModerators < ActiveRecord::Migration
       t.string :fullname
       t.string :username
       t.string :password_digest
+      t.boolean :global, null: false, default: false
 
       t.timestamps null: false
     end

@@ -37,7 +37,6 @@
 					<td><%= tag.name %></td>
 					<td>
 						<%= link_to 'Edit', edit_admin_tag_path(tag) %> |
-						<%= link_to 'Show', admin_tag_path(tag) %> |
 						<%=
 							if !tag.in_use?
 								link_to 'Delete', admin_tag_path(tag), method: :delete, data: { confirm: 'Are you sure?' }
