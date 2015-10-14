@@ -58,7 +58,8 @@ Rails.application.routes.draw do
   get '/logout' => 'admin/sessions#destroy'
 
   namespace :admin do 
-    resources :moderators, :posts, :tags
+    resources :moderators, only: [:edit, :update, :index] 
+    resources :posts, :tags
     resources :post_search, only: [:index]
     resources :comments, only: [:index, :destroy, :update]
     resources :comment_search, only: [:index]
