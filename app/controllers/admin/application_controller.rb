@@ -10,7 +10,7 @@ class Admin::ApplicationController < ActionController::Base
   def current_moderator
     @current_moderator ||= Moderator.find(session[:moderator_id]) if session[:moderator_id]
   end
-  # helper_method :current_moderator
+  helper_method :current_moderator
 
   def authorize
   	unless current_moderator
