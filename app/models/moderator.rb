@@ -5,4 +5,5 @@ class Moderator < ActiveRecord::Base
 
 	validates :fullname, presence: true
 	validates :username, presence: true, uniqueness: true, format: { with: /@/, message: 'is not a valid email' }
+	validates :password, presence: true
 end

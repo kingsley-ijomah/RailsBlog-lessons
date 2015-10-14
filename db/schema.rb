@@ -39,9 +39,8 @@ ActiveRecord::Schema.define(version: 20151009114757) do
     t.string   "fullname"
     t.string   "username"
     t.string   "password_digest"
-    t.boolean  "global",          default: false, null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "notifications", force: :cascade do |t|
