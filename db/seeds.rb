@@ -10,8 +10,7 @@
 moderator = Moderator.create(
 	fullname: "Kingsley Ijomah", 
 	username: "kingsley@example.com", 
-	password: "example",
-	global: true)
+	password: "example")
 
 # only one record should ever exist
 Setting.create(
