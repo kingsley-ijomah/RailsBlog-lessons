@@ -7,12 +7,7 @@ class Admin::ModeratorsController < Admin::ApplicationController
 	end
 
 	def new
-		if current_moderator.is_global?
-			@moderator = Moderator.new
-		else
-			flash[:notice] = "You are not authorised to create moderators"
-			redirect_to admin_moderators_url
-		end
+		@moderator = Moderator.new
 	end
 
 	def create
@@ -42,12 +37,8 @@ class Admin::ModeratorsController < Admin::ApplicationController
 	end
 
 	def destroy
-		if @moderator.is_logged_in?(current_moderator)
-			flash[:notice] = "Cannot delete a moderator currently logged in"
-		else
-			@moderator.destroy
-			flash[:notice] = "Moderator deleted successfully"
-		end
+		@moderator.destroy
+		flash[:notice] = "Moderator deleted successfully"
 		redirect_to :back
 	end
 

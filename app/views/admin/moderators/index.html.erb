@@ -1,8 +1,5 @@
 <div class="container">
 	<h1>Moderators</h1>
-	<p>
-		<%= link_to 'New', new_admin_moderator_path %>
-	</p>
 
 	<table class="table table-bordered">
 	  <thead>
@@ -14,13 +11,13 @@
 		</thead>
 
 		<tbody>
-			<% @moderators.each do |admin| %>
+			<% @moderators.each do |moderator| %>
 				<tr class="moderator-row">
-					<td><%= admin.fullname %></td>
-					<td><%= admin.username %></td>
+					<td><%= moderator.fullname %></td>
+					<td><%= moderator.username %></td>
 					<td>
-						<%= link_to 'Edit', edit_admin_moderator_path(admin) %> |
-						<%= link_to 'Delete', admin_moderator_path(admin), method: :delete %>
+						<%= link_to 'Edit', edit_admin_moderator_path(moderator) %>
+						<%= link_to 'Delete', admin_moderator_path(moderator), method: :delete %>
 					</td>
 				</tr>
 			<% end %>

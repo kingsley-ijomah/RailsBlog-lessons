@@ -6,13 +6,22 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-30.times do
-	moderator = Moderator.create(
-		fullname: Faker::Name.name, 
-		username: Faker::Internet.email, 
-		password: Faker::Internet.password,
-		global: false)
+# global moderator
+moderator = Moderator.create(
+	fullname: "Kingsley Ijomah", 
+	username: "kingsley@example.com", 
+	password: "example",
+	global: true)
 
+# only one record should ever exist
+Setting.create(
+	site_name: Faker::Company.name,
+	post_per_page: 20,
+	under_maintenance: false,
+	prevent_commenting: false,
+	tag_visibility: true)
+
+30.times do
 	post = Post.create(
 		title: Faker::Lorem.sentence, 
 		content: Faker::Lorem.paragraph, 
@@ -52,18 +61,3 @@
 		notifiable_id: notifiable.id,
 		notifiable_type: notifiable_type)
 end
-
-# global moderator
-Moderator.create(
-	fullname: "Kingsley Ijomah", 
-	username: "kingsley@example.com", 
-	password: "example",
-	global: true)
-
-# only one record should ever exist
-Setting.create(
-	site_name: Faker::Company.name,
-	post_per_page: 20,
-	under_maintenance: false,
-	prevent_commenting: false,
-	tag_visibility: true)
