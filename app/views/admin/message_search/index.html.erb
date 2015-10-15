@@ -1,0 +1,29 @@
+<div class="container">
+	<h2>Search Results</h2>
+
+	<%= form_tag(admin_message_search_index_path, method: 'get') do %>
+		<%= text_field_tag(:search) %>
+		<%= submit_tag("Search") %>
+	<% end %>
+
+	<br>
+
+<% @messages.each do |message| %>
+	<% message.status == false ? weight = 'font-weight:bold' : weight = 'font-weight:normal' %>
+	<p style=<%= "#{weight}" %>>
+		<%= message.visitor.fullname %> <br>
+		<%= truncate(message.content, length: 35, separator: ' ') %> <br>
+		<%= message.status %> <br>
+		<%= time_ago_in_words(message.created_at) %> <br>
+	</p>
+	<%= link_to 'Delete', admin_message_path(message), method: :delete %>
+	<%= link_to 'View', admin_message_path(message) %>
+
+	<% if message.status == true %>
+		<%= link_to 'Mark Unread', admin_message_path(message, status: false), method: :put %>
+	<% else %>
+		<%= link_to 'Mark read', admin_message_path(message, status: true), method: :put %>
+	<% end %>
+
+<% end %>
+<p><%= paginate @messages %></p>
