@@ -9,6 +9,7 @@
 		<%= visitor.fullname %> <br>
 		<%= visitor.email %> <br>
 		<%= time_ago_in_words(visitor.created_at) %>
+		<%= link_to 'Delete', admin_visitor_path(visitor), method: :delete, data: {confirm: 'Are you sure?'} %>
 	</p>
 <% end %>
 
