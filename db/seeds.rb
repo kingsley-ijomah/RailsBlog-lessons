@@ -14,7 +14,7 @@ moderator = Moderator.create(
 
 # only one record should ever exist
 Setting.create(
-	site_name: Faker::Company.name,
+	site_name: 'Site Name',
 	post_per_page: 20,
 	under_maintenance: false,
 	prevent_commenting: false,
