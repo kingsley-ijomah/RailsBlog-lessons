@@ -16,6 +16,13 @@
   <div class="alert"><%= flash[:alert] %></div>
 <% end %>
 
+<p>
+	<%= link_to 'Posts', posts_path %>
+	<%= link_to 'About', '#' %>
+	<%= link_to 'Contact', '#' %>
+</p>
+
+
 <%= yield %>
 
 </body>
