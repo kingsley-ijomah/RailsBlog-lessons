@@ -1,7 +1,7 @@
 <h1>Messages</h1>
 
 <p>
-	<%= form_tag(admin_message_search_index_path, method: 'get') do %>
+	<%= form_tag(admin_messages_path, method: 'get') do %>
 		<%= text_field_tag(:search) %>
 		<%= submit_tag("Search") %>
 	<% end %>

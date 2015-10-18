@@ -1,6 +1,11 @@
 class Admin::MessagesController < Admin::ApplicationController
   def index
-  	@messages = Message.all.order(id: :desc).page params[:page]
+    if params[:search].present? && !params[:search].nil?
+      @messages = Message.joins(:visitor).where(
+        "content like ? OR fullname like ?", "%#{params[:search]}%", "%#{params[:search]}%").page params[:page]
+    else
+      @messages = Message.all.order(id: :desc).page params[:page]
+    end
   end
 
   def show

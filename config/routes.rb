@@ -9,8 +9,6 @@ Rails.application.routes.draw do
     resources :moderators, only: [:edit, :update, :index] 
     resources :posts, :tags
     resources :comments, only: [:index, :destroy, :update]
-    resources :comment_search, only: [:index]
-    resources :message_search, only: [:index]
     resources :visitors, only: [:index, :destroy]
     resources :messages, only: [:index, :update, :destroy, :show]
     resources :dashboard, only: [:index]
