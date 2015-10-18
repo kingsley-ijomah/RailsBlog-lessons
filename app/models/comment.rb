@@ -12,4 +12,16 @@ class Comment < ActiveRecord::Base
   		self.status = false
   	end
   end
+
+  def self.filter_by_approved status
+    Comment.where(status: to_boolean(status)).order(id: :desc)
+  end
+
+  def self.to_boolean str
+    str == 'true'
+  end
+
+  def self.matching_message_or_fullname search
+    joins(:visitor).where("message like ? OR fullname like ?", "%#{search}%", "%#{search}%")
+  end
 end
