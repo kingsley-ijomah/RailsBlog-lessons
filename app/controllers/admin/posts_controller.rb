@@ -2,7 +2,12 @@ class Admin::PostsController < Admin::ApplicationController
 	before_action :set_post, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@posts = Post.all.order(id: :desc).page params[:page]
+		if params[:search].present? && !params[:search].nil?
+			@posts = Post.where(
+				"title like ? OR content like ?", "%#{params[:search]}%", "%#{params[:search]}%").page params[:page]
+		else
+			@posts = Post.all.order(id: :desc).page params[:page]
+		end
 	end
 
 	def new

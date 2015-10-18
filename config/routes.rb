@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   namespace :admin do 
     resources :moderators, only: [:edit, :update, :index] 
     resources :posts, :tags
-    resources :post_search, only: [:index]
     resources :comments, only: [:index, :destroy, :update]
     resources :comment_search, only: [:index]
     resources :message_search, only: [:index]
