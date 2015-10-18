@@ -1,5 +1,7 @@
 <div class="container">
 
+	<%= link_to 'All Posts', posts_path %>
+
 	<% @posts.each do |post| %>
 		<p>
 			<%= truncate(post.title, length: 70, separator: ' ') %><br>
@@ -13,7 +15,7 @@
 			<ul>
 				<% if Setting.tag_visible? %>
 					<% post.tags.each do |tag| %>
-							<li><%= tag.name %></li>
+							<li><%= link_to tag.name, posts_path(tag: tag.name) %></li>
 					<% end %>
 				<% end %>
 			</ul>

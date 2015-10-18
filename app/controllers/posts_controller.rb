@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   def index
-  	@posts = Post.where(publish: true).order(id: :desc).page(params[:page]).per(Setting.post_per_page)
+  	if params[:tag]
+  		@posts = Post.filter_by_tag params[:tag], params[:page]
+  	else
+  		@posts = Post.get_published params[:page]
+  	end
   end
 
   def show
