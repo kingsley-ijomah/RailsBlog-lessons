@@ -1,2 +1,35 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="container">
+
+	<%= link_to 'All Posts', posts_path %>
+
+
+	<p>
+		<%= @post.title %><br>
+		<%= "created #{time_ago_in_words(@post.created_at)} ago" %>
+	</p>
+
+	<p>
+		<%= @post.content %>
+	</p>
+	<p>
+		<ul>
+			<% if Setting.tag_visible? %>
+				<% @post.tags.each do |tag| %>
+						<li><%= link_to tag.name, posts_path(tag: tag.name) %></li>
+				<% end %>
+			<% end %>
+		</ul>
+	</p>
+
+	<h2>Comments</h2>
+	<p>
+		<% @post.comments.each_with_index do |comment, index| %>
+			<p>
+				<%= double_digit_counter(index) %>
+				<%= comment.message %> <br>
+				<b><%= comment.visitor.fullname %></b> Commented: <%= time_ago_in_words(comment.created_at) %>
+			</p>
+		<% end %>
+	</p>
+</div>
+
