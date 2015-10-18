@@ -11,8 +11,10 @@
 		</p>
 		<p>
 			<ul>
-				<% post.tags.each do |tag| %>
-						<li><%= tag.name %></li>
+				<% if Setting.tag_visible? %>
+					<% post.tags.each do |tag| %>
+							<li><%= tag.name %></li>
+					<% end %>
 				<% end %>
 			</ul>
 		</p>
