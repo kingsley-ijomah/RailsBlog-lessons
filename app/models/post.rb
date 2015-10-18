@@ -8,15 +8,15 @@ class Post < ActiveRecord::Base
 	validates :content, presence: true
 	validates :moderator_id, presence: true
 
-	def self.filter_by_tag param_tag, param_page
-		Post.includes(:tags)
-			.where(publish: true, tags: {name: param_tag})
-			.order(id: :desc)
-			.page(param_page)
-			.per(Setting.post_per_page)
+	def self.filter_by_tag param_tag
+		includes(:tags).where(publish: true, tags: {name: param_tag}).order(id: :desc)
 	end
 
-	def self.get_published param_page
-		Post.where(publish: true).order(id: :desc).page(param_page).per(Setting.post_per_page)
+	def self.get_published
+		where(publish: true).order(id: :desc)
+	end
+
+	def self.matching_title_or_content param_search
+		where("title like ? OR content like ?", "%#{param_search}%", "%#{param_search}%")
 	end
 end
