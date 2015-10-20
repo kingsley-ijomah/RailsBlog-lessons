@@ -3,6 +3,8 @@ class Comment < ActiveRecord::Base
   belongs_to :post
   belongs_to :visitor
 
+  validates :message, presence: true
+
   before_save :status_to_boolean
 
   def status_to_boolean

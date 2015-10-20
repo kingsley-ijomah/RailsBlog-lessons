@@ -1,0 +1,39 @@
+<%= form_for :visitor, url: comment_visitors_path do |f| %>
+
+	<% if session[:visitor_errors] %>
+		<div id="error_explanation">
+      <h2><%= pluralize(session[:visitor_errors].count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+	      <% session[:visitor_errors].each do |key, value|
+
+			    value.each do |value| %>
+			      <p><%= "#{key}  #{value}" %></p>
+			    <% end %>
+			  <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<p>
+		<%= f.label :fullname %><br>
+		<%= f.text_field :fullname %>
+	</p>
+
+	<p>
+		<%= f.label :email %><br>
+		<%= f.text_field :email %>
+	</p>
+
+	<%= f.fields_for :comments do |c| %>
+		<p>
+			<%= c.label :message %><br>
+			<%= c.text_area :message %>
+		</p>
+		<%= c.hidden_field :post_id, value: post.id %>
+	<% end %>
+
+	<p>
+		<%= f.submit 'Send Message' %>
+	</p>
+<% end %>
