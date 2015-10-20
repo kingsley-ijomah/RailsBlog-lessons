@@ -10,11 +10,26 @@ class Visitor < ActiveRecord::Base
 		visitor_params = visitor_params
   	comments_params = visitor_params.delete(:comments)
 
-  	visitor = Visitor.find_or_initialize_by(email: visitor_params[:email]) do |v|
-		  v.fullname = visitor_params[:fullname]
-		end
+  	visitor = build_visitor(visitor_params, comments_params)
+  end
 
-  	visitor.comments << Comment.new(comments_params)
-  	visitor
+  def self.find_or_initialize visitor_params
+  	visitor = Visitor.find_or_initialize_by(email: visitor_params[:email]) do |v|
+			v.fullname = visitor_params[:fullname]
+		end
+  end
+
+  def self.initialize_visitor_with_comment(visitor_params, comments_params)
+  	visitor = find_or_initialize(visitor_params)
+		visitor.comments << Comment.new(comments_params)
+		visitor
+  end
+
+  def self.build_visitor visitor_params, comments_params
+  	if visitor_params[:email].nil?
+  		Visitor.new(visitor_params)
+  	else
+  		initialize_visitor_with_comment(visitor_params, comments_params)
+		end
   end
 end
