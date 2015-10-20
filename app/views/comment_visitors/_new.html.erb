@@ -5,10 +5,9 @@
       <h2><%= pluralize(session[:visitor_errors].count, "error") %> prohibited this comment from being saved:</h2>
 
       <ul>
-	      <% session[:visitor_errors].each do |key, value|
-
-			    value.each do |value| %>
-			      <p><%= "#{key}  #{value}" %></p>
+	      <% session[:visitor_errors].each do |field, messages|
+			    messages.each do |message| %>
+			      <p><%= "#{field}  #{message}" %></p>
 			    <% end %>
 			  <% end %>
       </ul>
