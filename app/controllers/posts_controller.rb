@@ -9,5 +9,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    # first render view with session
+    # delete session after render
+    respond_to do |format|
+      format.html
+    end
+    session.delete(:visitor_errors) if session[:visitor_errors]
   end
 end
