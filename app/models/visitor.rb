@@ -4,7 +4,7 @@ class Visitor < ActiveRecord::Base
 	has_many :messages, dependent: :destroy
 
 	validates :fullname, presence: true
-	validates :email, presence: true, format: { with: /@/, message: 'is not a valid email' }
+	validates :email, format: { with: /@/, message: 'is not a valid' }
 
 	def self.build_visitor_comment(visitor_params)
 		visitor_params = visitor_params
@@ -20,14 +20,16 @@ class Visitor < ActiveRecord::Base
   end
 
   def self.initialize_visitor_with_comment(visitor_params, comments_params)
-  	visitor = find_or_initialize(visitor_params)
-		visitor.comments << Comment.new(comments_params)
-		visitor
+  	visitor = find_or_initialize(visitor_params).tap do |v|
+			v.comments << Comment.new(comments_params)
+		end
   end
 
   def self.build_visitor visitor_params, comments_params
-  	if visitor_params[:email].nil?
-  		Visitor.new(visitor_params)
+  	if visitor_params[:email].empty?
+  		Visitor.new(visitor_params).tap do |v|
+  			v.comments << Comment.new(comments_params)
+  		end
   	else
   		initialize_visitor_with_comment(visitor_params, comments_params)
 		end

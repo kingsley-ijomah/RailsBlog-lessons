@@ -1,17 +1,28 @@
 <%= form_for :visitor, url: comment_visitors_path do |f| %>
 
-	<% if session[:visitor_errors] %>
+	<% if session[:visitor_errors] || session[:comment_errors] %>
 		<div id="error_explanation">
-      <h2><%= pluralize(session[:visitor_errors].count, "error") %> prohibited this comment from being saved:</h2>
-
-      <ul>
-	      <% session[:visitor_errors].each do |field, messages|
-			    messages.each do |message| %>
-			      <p><%= "#{field}  #{message}" %></p>
-			    <% end %>
+	    <h2><%= pluralize(session[:visitor_errors].count, "error") %> prohibited this comment from being saved:</h2>
+	    <ul>
+	    	<% if session[:visitor_errors] %>
+		      <% session[:visitor_errors].each do |field, messages|
+		      	unless field == 'comments'
+					    messages.each do |message| %>
+					      <p><%= "#{field}  #{message}" %></p>
+					    <% end %>
+				    <% end %>
+				  <% end %>
 			  <% end %>
-      </ul>
-    </div>
+
+			  <% if session[:comment_errors] %>
+				  <% session[:comment_errors].each do |field, messages|
+				    messages.each do |message| %>
+				      <p><%= "#{field}  #{message}" %></p>
+				    <% end %>
+				  <% end %>
+			  <% end %>
+	    </ul>
+	  </div>
   <% end %>
 
 	<p>
