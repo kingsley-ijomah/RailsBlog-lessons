@@ -10,8 +10,9 @@ class CommentVisitorsController < ApplicationController
   		flash[:notice] = "Comment submitted successfully"
   	else
   		flash[:alert] = "There was a problem submitting your comment"
-  		session[:visitor_errors] = @visitor.errors if @visitor.errors.any?
-  		session[:comment_errors] = @visitor.comments.last.errors if @visitor.comments.last.errors.any?
+
+  		session[:visitor] = @visitor
+  		session[:comments] = @visitor.comments.last
   	end
 
   	redirect_to :back

@@ -9,12 +9,14 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    
+    # prepopulate form
+    @visitor = Visitor.new(session[:visitor]) if session[:visitor]
     # first render view with session
     # delete session after render
     respond_to do |format|
       format.html
     end
-    session.delete(:visitor_errors) if session[:visitor_errors]
-    session.delete(:comment_errors) if session[:comment_errors]
+    session.delete(:visitor) if session[:visitor]
   end
 end
