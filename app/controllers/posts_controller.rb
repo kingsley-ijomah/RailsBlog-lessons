@@ -15,5 +15,6 @@ class PostsController < ApplicationController
       format.html
     end
     session.delete(:visitor_errors) if session[:visitor_errors]
+    session.delete(:comment_errors) if session[:comment_errors]
   end
 end
