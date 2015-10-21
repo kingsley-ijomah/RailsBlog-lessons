@@ -5,14 +5,15 @@ class CommentVisitorsController < ApplicationController
 
   def create
   	@visitor = Visitor.build_visitor_comment(visitor_params)
-
+  	
   	if @visitor.save
   		flash[:notice] = "Comment submitted successfully"
   	else
   		flash[:alert] = "There was a problem submitting your comment"
-  		session[:visitor_errors] = @visitor.errors
+  		session[:visitor_errors] = @visitor.errors if @visitor.errors.any?
+  		session[:comment_errors] = @visitor.comments.last.errors if @visitor.comments.last.errors.any?
   	end
-  	
+
   	redirect_to :back
   end
 
