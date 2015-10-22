@@ -23,4 +23,8 @@ module Messageable
 	    end
 	  end
 	end
+
+	module InstanceMethods
+		#..
+	end
 end
