@@ -1,6 +1,4 @@
 class Visitor < ActiveRecord::Base
-	
-	include Commentable
 
 	has_many :notifications, as: :notifiable, dependent: :destroy
 	has_many :comments, dependent: :destroy, autosave: true
