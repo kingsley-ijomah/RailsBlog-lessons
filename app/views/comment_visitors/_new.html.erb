@@ -1,20 +1,14 @@
-<%= form_for :visitor, url: comment_visitors_path do |f| %>
+<%= form_for @visitor, url: comment_visitors_path do |f| %>
 
-	<% if @visitor %>
-		<% unless @visitor.valid? %>
-
-			<div id="error_explanation">
-		    <h2><%= pluralize(@visitor.errors.count, "error") %> prohibited this comment from being saved:</h2>
-		    <ul>
-		    	<% unless @visitor.valid? %>
-			      <% @visitor.errors.each do |field, message| %>
-			      	<p><%= "#{field}  #{message}" %></p>
-					  <% end %>
-				  <% end %>
-		    </ul>
-		  </div>
-
-		<% end %>
+	<% if session[:visitor_errors] %>
+		<div id="error_explanation">
+      <h2><%= pluralize(session[:visitor_errors].count, "error") %> prohibited this comment from being saved:</h2>
+      <ul>
+      <% session[:visitor_errors].each  do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
 	<% end %>
 
 
@@ -28,7 +22,7 @@
 		<%= f.text_field :email %>
 	</p>
 
-	<%= f.fields_for :comments do |c| %>
+	<%= f.fields_for :comments, @visitor.comments.build do |c| %>
 		<p>
 			<%= c.label :message %><br>
 			<%= c.text_area :message %>
