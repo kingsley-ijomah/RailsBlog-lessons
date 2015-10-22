@@ -22,7 +22,7 @@
 		<%= f.text_field :email %>
 	</p>
 
-	<%= f.fields_for :comments, @visitor.comments.build do |c| %>
+	<%= f.fields_for :comments do |c| %>
 		<p>
 			<%= c.label :message %><br>
 			<%= c.text_area :message %>

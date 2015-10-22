@@ -9,12 +9,19 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @visitor = Visitor.new
-    
+
+    if session[:visitor_attr] && session[:comments_attr]
+      @visitor = Visitor.build_comment(session[:visitor_attr], session[:comments_attr])
+    else
+      @visitor = Visitor.build_empty_comment
+    end
+
     respond_to do |format|
       format.html
     end
 
     session.delete(:visitor_errors) if session[:visitor_errors]
+    session.delete(:visitor_attr) if session[:visitor_attr]
+    session.delete(:comments_attr) if session[:comments_attr]
   end
 end

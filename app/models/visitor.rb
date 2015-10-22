@@ -9,14 +9,26 @@ class Visitor < ActiveRecord::Base
 
 	accepts_nested_attributes_for :comments
 
-	def self.build_comment params
-		visitor = Visitor.find_by(email: params[:email])
-		
-		if visitor
-  		params[:comments_attributes].each_value{|c| visitor.comments << Comment.new(c)}
-  		visitor
-  	else
-  		visitor = Visitor.new(params)
-  	end
-  end
+  include Messageable
+
+	# def self.find_or_build_comment params
+	# 	visitor = Visitor.find_by(email: params[:email])
+
+	# 	if visitor
+ #  		visitor.comments << Comment.new(params[:comments_attributes]["0"])
+ #  		visitor
+ #  	else
+ #  		Visitor.new(params)
+ #  	end
+	# end
+
+ #  def self.build_empty_comment
+ #  	Visitor.new(comments: [Comment.new()])
+ #  end
+
+ #  def self.build_comment visitor_attr, comments_attr
+ #  	Visitor.new(visitor_attr).tap do |v|
+ #      v.comments = [Comment.new(comments_attr)]
+ #    end
+ #  end
 end
