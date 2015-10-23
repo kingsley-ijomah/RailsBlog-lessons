@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: [:show, :index]
-  resources :comment_visitors, only: [:create, :new]
+  resources :comment_visitors, only: [:create]
 
   match 'dismiss_all_notifications', to: 'admin/notifications#delete_all', via: :delete
 end
