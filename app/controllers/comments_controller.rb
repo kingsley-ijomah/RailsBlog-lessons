@@ -1,4 +1,4 @@
-class CommentVisitorsController < ApplicationController
+class CommentsController < ApplicationController
   def create
   	@visitor = Visitor.find_or_build_comment(visitor_params)
 
