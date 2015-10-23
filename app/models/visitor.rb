@@ -8,7 +8,9 @@ class Visitor < ActiveRecord::Base
 	validates :email, format: { with: /@/, message: 'is not valid' }
 
 	accepts_nested_attributes_for :comments
+	accepts_nested_attributes_for :messages
 
+  include Commentable
   include Messageable
 
 end
