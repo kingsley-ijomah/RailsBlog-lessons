@@ -7,6 +7,9 @@ class Comment < ActiveRecord::Base
 
   before_save :status_to_boolean
 
+  # after save update notifications
+  include Notifiable
+
   def status_to_boolean
   	if self.status == 'true' 
   		self.status = true

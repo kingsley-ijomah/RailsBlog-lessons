@@ -7,7 +7,7 @@ class Admin::NotificationsController < Admin::ApplicationController
   def destroy
   	@notification = Notification.find(params[:id])
   	@notification.destroy
-
+    
     flash[:notice] = "Notification dismissed successfully"
   	redirect_to :back
   end

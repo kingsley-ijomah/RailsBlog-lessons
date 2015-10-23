@@ -1,4 +1,5 @@
 class Message < ActiveRecord::Base
+
   belongs_to :visitor
 
   validates :content, presence: true
