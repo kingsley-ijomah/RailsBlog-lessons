@@ -53,6 +53,7 @@ Setting.create(
 		visitor: visitor, 
 		status: [true, false].sample)
 
+	# remove after front end is done
 	notifiable = [comment[0], visitor].sample
 	notifiable_type = notifiable.class.name
 
