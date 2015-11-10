@@ -16,12 +16,7 @@
 	<div class="alert"><%= flash[:alert] %></div>
 <% end %>
 
-<%= link_to 'Log out', logout_path if session[:current_moderator_id] %>
-
-<p>
-	<%= link_to 'Moderators', admin_moderators_path %>
-	<%= link_to 'Posts', admin_posts_path %>
-</p>
+<%= link_to 'Log out', logout_path %>
 
 <%= yield %>
 
