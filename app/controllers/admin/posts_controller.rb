@@ -1,6 +1,6 @@
 class Admin::PostsController < Admin::ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.all.order(id: :desc).page params[:page]
   end
 
   def new
