@@ -2,6 +2,13 @@
 
 <p><%= link_to 'New Post', new_admin_post_path %></p>
 
+<p>
+	<%= form_tag(admin_posts_path, method: :get) do %>
+		<%= text_field_tag :search %>
+		<%= submit_tag 'Search' %>
+	<% end %>
+</p>
+
 <table class="table table-bordered table-hover">
 	<thead>
 		<tr>
