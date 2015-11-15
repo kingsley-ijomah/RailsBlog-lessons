@@ -8,6 +8,7 @@ class Admin::PostsController < Admin::ApplicationController
   end
 
   def new
+  	@post = Post.new
   end
 
   def create
