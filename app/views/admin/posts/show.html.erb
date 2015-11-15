@@ -1,2 +1,5 @@
 <h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<p><b>title:</b> <%= @post.title %></p>
+<p><b>content:</b> <%= @post.content %></p>
+<p><b>publish:</b> <%= status_converter(@post.publish) %></p>
+<p><b>created:</b> <%= time_ago(@post.created_at) %></p>
