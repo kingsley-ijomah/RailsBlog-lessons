@@ -42,6 +42,10 @@ class Admin::PostsController < Admin::ApplicationController
   end
 
   def destroy
+  	@post = Post.find(params[:id])
+  	@post.destroy
+
+  	redirect_to :back, notice: 'Post was successfully deleted'
   end
 
   private
