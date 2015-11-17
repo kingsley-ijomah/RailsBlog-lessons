@@ -1,0 +1,6 @@
+<h1>Admin::Tags#new</h1>
+
+<%= form_for [:admin, @tag] do |f| %>
+	<p><%= f.text_area :name, placeholder: 'e.g Ruby, Python, Php' %></p>
+	<p><%= f.submit %></p>
+<% end %>
