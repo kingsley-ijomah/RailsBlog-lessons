@@ -4,3 +4,31 @@
 	<p><%= f.text_area :name, placeholder: 'e.g Ruby, Python, Php' %></p>
 	<p><%= f.submit %></p>
 <% end %>
+
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>name</th>
+			<th>status</th>
+			<th>created</th>
+			<th>actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @tags.each do |tag| %>
+			<tr>
+				<td><%= tag.name %></td>
+				<td><%= status_converter(tag.in_use?, truthy: 'in use', falsey: 'not in use') %></td>
+				<td><%= time_ago tag.created_at %></td>
+				<td>
+					<%= link_to edit_admin_tag_path(tag) do %>
+						<button type="button">Edit</button>
+					<% end %>
+
+					<%= create_deletable_button tag %>
+				</td>
+			</tr>
+		<% end %>
+
+	</tbody>
+</table>
