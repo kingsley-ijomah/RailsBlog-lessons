@@ -1,6 +1,7 @@
 class Admin::TagsController < Admin::ApplicationController
   def new
     @tag = Tag.new
+    @tags = Tag.all.order(id: :desc)
   end
 
   def create
