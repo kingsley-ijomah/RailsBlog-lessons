@@ -1,2 +1,7 @@
 <h1>Admin::Tags#edit</h1>
-<p>Find me in app/views/admin/tags/edit.html.erb</p>
+
+<%= form_for [:admin, @tag] do |f| %>
+	<p><%= f.label :name %></p>
+	<p><%= f.text_field :name %></p>
+	<p><%= f.submit %></p>
+<% end %>
