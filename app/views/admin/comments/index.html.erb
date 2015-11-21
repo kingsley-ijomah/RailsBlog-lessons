@@ -4,3 +4,10 @@
 	<%= link_to 'Approved', admin_comments_path(status: true) %>
 	<%= link_to 'Un-approved', admin_comments_path(status: false) %>
 </p>
+
+<% @comments.each do |comment| %>
+	<p><b><%= comment.visitor.fullname %></b> posted message on <b><%= comment.post.title %></b></p>
+	<p><%= comment.message %></p>
+	<p><%= link_to 'Delete', admin_comment_path(comment), method: :delete, data: {confirm: 'Are your sure'} %></p>
+	<hr>
+<% end %>
