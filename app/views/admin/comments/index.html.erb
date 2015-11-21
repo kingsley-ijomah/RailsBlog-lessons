@@ -1,10 +1,7 @@
 <h1>Comments</h1>
 
 <p>
-	<%= form_tag(admin_comments_path, method: :get) do %>
-		<%= text_field_tag :search %>
-		<%= submit_tag 'Search' %>
-	<% end %>
+	<%= render 'search', route: admin_comments_path %>
 </p>
 
 <p>
