@@ -5,8 +5,7 @@
 </p>
 
 <% @messages.each do |message| %>
-<% message.status == false ? weight = 'font-weight:bold' : weight = 'font-weight:normal' %>
-	<p style=<%= "#{weight}" %>>
+	<p style=<%= message_weight(message) %>>
 		<%= message.visitor.fullname %><br>
 		<%= truncate(message.content, length: 60, separator: '') %><br>
 		<%= status_converter(message.status, truthy: 'Read', falsey: 'Un-Read') %><br>
@@ -19,13 +18,7 @@
 	</p>
 
 	<p>
-		<%=
-			if message.status == true 
-				link_to 'Un-Read', admin_message_path(message, status: false), method: :put
-			else
-				link_to 'Read', admin_message_path(message, status: true), method: :put
-			end
-		%>
+		<%= build_read_status_link message %>
 	</p>
 
 	<hr>
