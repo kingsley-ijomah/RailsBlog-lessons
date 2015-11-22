@@ -1,2 +1,13 @@
-<h1>Admin::Messages#index</h1>
-<p>Find me in app/views/admin/messages/index.html.erb</p>
+<h1>Messages</h1>
+
+<% @messages.each do |message| %>
+	<p>
+		<%= message.visitor.fullname %><br>
+		<%= truncate(message.content, length: 60, separator: '') %><br>
+		<%= status_converter(message.status, truthy: 'Read', falsey: 'Not Read') %><br>
+		<%= time_ago(message.created_at) %><br>
+		<%= link_to 'Delete', admin_message_path(message), method: :delete, data: {confirm: 'Are you sure?'} %>
+	</p>
+<% end %>
+
+<%= paginate @messages %>
