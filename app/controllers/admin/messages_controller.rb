@@ -1,9 +1,14 @@
 class Admin::MessagesController < Admin::ApplicationController
   def index
-  	@messages = Message.all.order(id: :desc).page params[:page]
+  	if params[:search].present?
+  		@messages = Message.matching_fullname_or_content(params[:search]).page params[:page]
+  	else
+  		@messages = Message.all.order(id: :desc).page params[:page]
+  	end
   end
 
   def show
+  	@message = Message.find(params[:id])
   end
 
   def update
