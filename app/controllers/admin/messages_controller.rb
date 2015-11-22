@@ -7,6 +7,10 @@ class Admin::MessagesController < Admin::ApplicationController
   end
 
   def update
+  	@message = Message.find(params[:id])
+  	@message.update(status: params[:status])
+
+  	redirect_to :back, notice: 'Successfully updated message'
   end
 
   def destroy
