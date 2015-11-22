@@ -1,5 +1,9 @@
 <h1>Messages</h1>
 
+<p>
+	<%= render 'search', route: admin_messages_path %>
+</p>
+
 <% @messages.each do |message| %>
 <% message.status == false ? weight = 'font-weight:bold' : weight = 'font-weight:normal' %>
 	<p style=<%= "#{weight}" %>>
@@ -11,6 +15,7 @@
 
 	<p>
 		<%= link_to 'Delete', admin_message_path(message), method: :delete, data: {confirm: 'Are you sure?'} %>
+		<%= link_to 'Show', admin_message_path(message) %>
 	</p>
 
 	<p>
