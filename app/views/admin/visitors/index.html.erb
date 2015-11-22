@@ -1,0 +1,9 @@
+<h1>Visitors</h1>
+
+<% @visitors.each do |visitor| %>
+	<p><%= visitor.fullname %></p>
+	<p><%= visitor.email %></p>
+	<p><%= time_ago visitor.created_at %></p>
+	<p><%= link_to 'Delete', admin_visitor_path(visitor), method: :delete, data: {confirm: 'Are you sure?'} %></p>
+	<hr>
+<% end %>
