@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :posts
+    resources :dashboard, only: [:index]
     resources :notifications, only: [:index, :destroy]
     resources :messages, only: [:index, :show, :update, :destroy]
     resources :visitors, only: [:index, :destroy]
