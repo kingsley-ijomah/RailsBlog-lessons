@@ -28,3 +28,39 @@
 		<% end %>
 	</tbody>
 </table>
+
+<h2>Comments</h2>
+<%= link_to 'list all comments', admin_comments_path %>
+
+<% @comments.each do |comment| %>
+	<p><%= comment.visitor.fullname %></p>
+	<p><%= truncate(comment.message, length: 125, separator: '') %></p>
+	<p><%= time_ago comment.created_at %></p>
+	<hr>
+<% end %>
+
+<h2>Visitors</h2>
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Full Name</th>
+			<th>Email</th>
+			<th>Created</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @visitors.each_with_index do |visitor, index| %>
+		<tr>
+			<td><%= index + 1 %></td>
+			<td><%= visitor.fullname %></td>
+			<td><%= visitor.email %></td>
+			<td><%= time_ago visitor.created_at %></td>
+			<td>
+				<%= link_to 'delete', admin_visitor_path(visitor), method: :delete, data: {confirm: 'Are your sure?'} %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
